@@ -441,6 +441,32 @@
     JAVASCRIPT (LOGIQUE DE SOUMISSION)
     ==================================================
     */
+    
+    // Définition des noms de fichiers à vérifier (nous allons tester plusieurs chemins)
+    const IMAGE_CRAQNMAC = 'McDo.png';     // Craq'n'Mac
+    const IMAGE_WONKA = 'partenariat.png'; // Wonka
+
+    // Si vous avez un dossier 'img' sur GitHub, changez ces chemins :
+    // const IMAGE_CRAQNMAC = 'img/McDo.png';
+    // const IMAGE_WONKA = 'img/partenariat.png';
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Cette fonction de débogage essaie de charger l'image
+        const checkImageLoad = (src) => {
+            const img = new Image();
+            img.onload = () => console.log(`SUCCESS: L'image ${src} a été trouvée.`);
+            img.onerror = () => console.error(`ERROR: L'image ${src} n'a PAS été trouvée. Vérifiez le nom et l'extension.`);
+            img.src = src;
+        };
+
+        // Si l'affichage ne fonctionne pas, regardez la console de votre navigateur (F12)
+        // pour voir laquelle de ces deux lignes donne ERROR.
+        checkImageLoad(IMAGE_CRAQNMAC);
+        checkImageLoad(IMAGE_WONKA);
+    });
+
+    // LOGIQUE DE SOUMISSION DU FORMULAIRE
     document.getElementById('marketingSurvey').addEventListener('submit', function(event) {
         event.preventDefault();
 
