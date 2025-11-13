@@ -1,430 +1,301 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Questionnaire McDonald's</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sondage Marketing - McDo X Chocolat</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /*
+        ==================================================
+        CSS (STYLE MCDO THÉMATIQUE)
+        ==================================================
+        */
+        :root {
+            --sapin-green: #004d40;
+            --light-cream: #f9f9f9;
+            --accent-gold: #ffc72c;
+            --accent-red: #c00;
+            --text-on-dark: #f0f0f0;
+            --text-dark: #333;
+            --text-light: #555;
+            --mcdo-font: 'Oswald', sans-serif;
+            --body-font: Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--sapin-green);
+            color: var(--text-on-dark);
+            margin: 0;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: var(--light-cream);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            max-width: 700px; /* Taille ajustée pour le format Select/Label */
+            width: 100%;
+            border-top: 8px solid var(--accent-gold); 
+            color: var(--text-dark);
+        }
+
+        h1 {
+            font-family: var(--mcdo-font);
+            color: var(--accent-red);
+            font-size: 3.2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .container > p {
+            color: var(--text-light); 
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Style pour l'image randomisée */
+        .image-test {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .image-test img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 6px;
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Styles des Labels et Selects */
+        label {
+            display: block;
+            font-family: var(--mcdo-font);
+            color: var(--sapin-green);
+            font-size: 1.2em;
+            margin-top: 25px;
+            margin-bottom: 8px;
+            padding-left: 5px;
+            border-left: 4px solid var(--accent-red);
+        }
+
+        select {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: white;
+            transition: border-color 0.2s;
+            appearance: menulist-button; /* Assure que le style est pris en compte */
+        }
+
+        select:focus {
+            border-color: var(--accent-gold);
+            outline: none;
+        }
+        
+        /* Styles du bouton de soumission */
+        button[type="submit"] {
+            font-family: var(--mcdo-font);
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background-color: var(--accent-red);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.5em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 40px;
+            letter-spacing: 2px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #a00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
+    <div class="container">
 
-    <h1>Questionnaire McDonald's</h1>
-    <p>Merci de prendre quelques minutes pour répondre.</p>
+        <h1>Questionnaire McDonald's</h1>
+        <p>Merci de prendre quelques minutes pour répondre.</p>
 
-    <!-- Zone d'image randomisée -->
-    <div class="image-test">
-      <img id="testImage" alt="Image de la tablette" />
+        <div class="image-test">
+            <img id="testImage" alt="Image de la tablette de chocolat McDo" />
+        </div>
+
+        <form action="https://formspree.io/f/mrbrbopl" method="POST">
+            
+            <label for="chocolat">Si McDonald's proposait une tablette de chocolat, laquelle préféreriez-vous ?</label>
+            <select id="chocolat" name="chocolat" required>
+                <option value="" disabled selected>Choisissez une option</option>
+                <option value="partenariat">Une tablette issue d’un partenariat (ex : Willy Wonka)</option>
+                <option value="mcdo">Une tablette créée uniquement par McDonald's</option>
+            </select>
+
+            <label for="age">Quel est votre âge ?</label>
+            <select id="age" name="age" required>
+                <option value="moins18">Moins de 18 ans</option>
+                <option value="18-24">18-24 ans</option>
+                <option value="25-34">25-34 ans</option>
+                <option value="35-44">35-44 ans</option>
+                <option value="45plus">45 ans et plus</option>
+            </select>
+
+            <label for="situation">Quelle est votre situation actuelle ?</label>
+            <select id="situation" name="situation" required>
+                <option value="etudiant">Étudiant</option>
+                <option value="salarie">Salarié</option>
+                <option value="independant">Indépendant</option>
+                <option value="sansemploi">Sans emploi</option>
+                <option value="autre">Autre</option>
+            </select>
+
+            <label for="zone">Dans quelle zone géographique résidez-vous ?</label>
+            <select id="zone" name="zone" required>
+                <option value="urbaine">Zone urbaine</option>
+                <option value="rurale">Zone rurale / périurbaine</option>
+            </select>
+
+            <label for="frequence">À quelle fréquence allez-vous chez McDonald's ?</label>
+            <select id="frequence" name="frequence" required>
+                <option value="plusieurs">Plusieurs fois par semaine</option>
+                <option value="semaine">Environ une fois par semaine</option>
+                <option value="1-3mois">1 à 3 fois par mois</option>
+                <option value="moinsmois">Moins d’une fois par mois</option>
+                <option value="jamais">Jamais</option>
+            </select>
+
+            <label for="depense">Quelle est votre dépense moyenne lors d’une visite chez McDonald's ?</label>
+            <select id="depense" name="depense" required>
+                <option value="moins8">Moins de 8 €</option>
+                <option value="8-12">8 à 12 €</option>
+                <option value="13-17">13 à 17 €</option>
+                <option value="plus17">Plus de 17 €</option>
+            </select>
+
+            <label for="moment">À quel moment de la journée allez-vous le plus souvent chez McDonald's ?</label>
+            <select id="moment" name="moment" required>
+                <option value="midi">Le midi</option>
+                <option value="soir">Le soir</option>
+                <option value="finsoiree">En fin de soirée</option>
+                <option value="weekend">En week-end</option>
+                <option value="autre">Autre</option>
+            </select>
+
+            <label for="motivation">Quelles sont vos motivations lorsque vous allez chez McDonald's ?</label>
+            <select id="motivation" name="motivation" required>
+                <option value="prix">Prix abordable</option>
+                <option value="rapidite">Rapidité du service</option>
+                <option value="gout">Goût / plaisir</option>
+                <option value="habitude">Habitude</option>
+                <option value="accessibilite">Accessibilité (proximité)</option>
+                <option value="autre">Autre</option>
+            </select>
+
+            <label for="consommation">Lorsque vous consommez chez McDonald's, préférez-vous :</label>
+            <select id="consommation" name="consommation" required>
+                <option value="surplace">Manger sur place</option>
+                <option value="emporter">Prendre à emporter</option>
+                <option value="drive">Utiliser le drive</option>
+                <option value="application">Commander via l’application</option>
+            </select>
+
+            <label for="prix">Trouvez-vous que les prix chez McDonald's ont augmenté ces dernières années ?</label>
+            <select id="prix" name="prix" required>
+                <option value="beaucoup">Oui, beaucoup</option>
+                <option value="unpeu">Oui, un peu</option>
+                <option value="non">Non, pas vraiment</option>
+                <option value="ne_sais_pas">Je ne sais pas</option>
+            </select>
+
+            <label for="qualiteprix">Trouvez-vous que le rapport qualité/prix chez McDonald's est :</label>
+            <select id="qualiteprix" name="qualiteprix" required>
+                <option value="excellent">Excellent</option>
+                <option value="bon">Bon</option>
+                <option value="moyen">Moyen</option>
+                <option value="mauvais">Mauvais</option>
+            </select>
+
+            <label for="application">Utilisez-vous l’application McDo+ pour commander ou profiter d’offres ?</label>
+            <select id="application" name="application" required>
+                <option value="regulierement">Oui, régulièrement</option>
+                <option value="parfois">Oui, de temps en temps</option>
+                <option value="jamais">Non, jamais</option>
+            </select>
+
+            <label for="fidelite">Êtes-vous fidèle à McDonald's (par rapport aux autres fast-foods) ?</label>
+            <select id="fidelite" name="fidelite" required>
+                <option value="exclusivement">Oui, exclusivement</option>
+                <option value="aussiailleurs">Oui, mais j’y vais aussi ailleurs</option>
+                <option value="varie">Non, je varie souvent</option>
+            </select>
+
+            <label for="adaptation">Pensez-vous que McDonald's propose une offre adaptée aux attentes actuelles ?</label>
+            <select id="adaptation" name="adaptation" required>
+                <option value="toutafait">Oui tout à fait</option>
+                <option value="plutotoui">Plutôt oui</option>
+                <option value="plutotnon">Plutôt non</option>
+                <option value="pasdutout">Pas du tout</option>
+            </select>
+
+            <label for="achat">Seriez-vous prêt à acheter ce produit ?</label>
+            <select id="achat" name="achat" required>
+                <option value="oui">Oui</option>
+                <option value="non">Non</option>
+            </select>
+
+            <label for="prixchocolat">À quel prix seriez-vous prêt à acheter ce produit ?</label>
+            <select id="prixchocolat" name="prixchocolat" required>
+                <option value="menu+2">Prix du menu + 2 €</option>
+                <option value="menu+3">Prix du menu + 3 €</option>
+                <option value="menu+4">Prix du menu + 4 €</option>
+            </select>
+
+            <button type="submit">Envoyer</button>
+        </form>
     </div>
 
-    <form action="https://formspree.io/f/mrbrbopl" method="POST">
+    <script>
+        const images = [
+            "McDo.png",        // Image tablette McDo seule (Craq'n'Mac)
+            "partenariat.png" // Image tablette partenariat Wonka
+        ];
+        // Ajout d'une variable cachée pour enregistrer l'image vue
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const selectedImage = images[randomIndex];
+        document.getElementById("testImage").src = selectedImage;
 
-      <!-- A/B Testing -->
-      <label for="chocolat">Si McDonald's proposait une tablette de chocolat, laquelle préféreriez-vous ?</label>
-      <select id="chocolat" name="chocolat" required>
-        <option value="" disabled selected>Choisissez une option</option>
-        <option value="partenariat">Une tablette issue d’un partenariat (ex : Willy Wonka)</option>
-        <option value="mcdo">Une tablette créée uniquement par McDonald's</option>
-      </select>
-
-      <!-- Partie 1 – Profil -->
-      <label for="age">Quel est votre âge ?</label>
-      <select id="age" name="age" required>
-        <option value="moins18">Moins de 18 ans</option>
-        <option value="18-24">18-24 ans</option>
-        <option value="25-34">25-34 ans</option>
-        <option value="35-44">35-44 ans</option>
-        <option value="45plus">45 ans et plus</option>
-      </select>
-
-      <label for="situation">Quelle est votre situation actuelle ?</label>
-      <select id="situation" name="situation" required>
-        <option value="etudiant">Étudiant</option>
-        <option value="salarie">Salarié</option>
-        <option value="independant">Indépendant</option>
-        <option value="sansemploi">Sans emploi</option>
-        <option value="autre">Autre</option>
-      </select>
-
-      <label for="zone">Dans quelle zone géographique résidez-vous ?</label>
-      <select id="zone" name="zone" required>
-        <option value="urbaine">Zone urbaine</option>
-        <option value="rurale">Zone rurale / périurbaine</option>
-      </select>
-
-      <!-- Partie 2 – Habitudes -->
-      <label for="frequence">À quelle fréquence allez-vous chez McDonald's ?</label>
-      <select id="frequence" name="frequence" required>
-        <option value="plusieurs">Plusieurs fois par semaine</option>
-        <option value="semaine">Environ une fois par semaine</option>
-        <option value="1-3mois">1 à 3 fois par mois</option>
-        <option value="moinsmois">Moins d’une fois par mois</option>
-        <option value="jamais">Jamais</option>
-      </select>
-
-      <label for="depense">Quelle est votre dépense moyenne lors d’une visite chez McDonald's ?</label>
-      <select id="depense" name="depense" required>
-        <option value="moins8">Moins de 8 €</option>
-        <option value="8-12">8 à 12 €</option>
-        <option value="13-17">13 à 17 €</option>
-        <option value="plus17">Plus de 17 €</option>
-      </select>
-
-      <label for="moment">À quel moment de la journée allez-vous le plus souvent chez McDonald's ?</label>
-      <select id="moment" name="moment" required>
-        <option value="midi">Le midi</option>
-        <option value="soir">Le soir</option>
-        <option value="finsoiree">En fin de soirée</option>
-        <option value="weekend">En week-end</option>
-        <option value="autre">Autre</option>
-      </select>
-
-      <label for="motivation">Quelles sont vos motivations lorsque vous allez chez McDonald's ?</label>
-      <select id="motivation" name="motivation" required>
-        <option value="prix">Prix abordable</option>
-        <option value="rapidite">Rapidité du service</option>
-        <option value="gout">Goût / plaisir</option>
-        <option value="habitude">Habitude</option>
-        <option value="accessibilite">Accessibilité (proximité)</option>
-        <option value="autre">Autre</option>
-      </select>
-
-      <label for="consommation">Lorsque vous consommez chez McDonald's, préférez-vous :</label>
-      <select id="consommation" name="consommation" required>
-        <option value="surplace">Manger sur place</option>
-        <option value="emporter">Prendre à emporter</option>
-        <option value="drive">Utiliser le drive</option>
-        <option value="application">Commander via l’application</option>
-      </select>
-
-      <!-- Partie 3 – Perception -->
-      <label for="prix">Trouvez-vous que les prix chez McDonald's ont augmenté ces dernières années ?</label>
-      <select id="prix" name="prix" required>
-        <option value="beaucoup">Oui, beaucoup</option>
-        <option value="unpeu">Oui, un peu</option>
-        <option value="non">Non, pas vraiment</option>
-        <option value="ne_sais_pas">Je ne sais pas</option>
-      </select>
-
-      <label for="qualiteprix">Trouvez-vous que le rapport qualité/prix chez McDonald's est :</label>
-      <select id="qualiteprix" name="qualiteprix" required>
-        <option value="excellent">Excellent</option>
-        <option value="bon">Bon</option>
-        <option value="moyen">Moyen</option>
-        <option value="mauvais">Mauvais</option>
-      </select>
-
-      <label for="application">Utilisez-vous l’application McDo+ pour commander ou profiter d’offres ?</label>
-      <select id="application" name="application" required>
-        <option value="regulierement">Oui, régulièrement</option>
-        <option value="parfois">Oui, de temps en temps</option>
-        <option value="jamais">Non, jamais</option>
-      </select>
-
-      <label for="fidelite">Êtes-vous fidèle à McDonald's (par rapport aux autres fast-foods) ?</label>
-      <select id="fidelite" name="fidelite" required>
-        <option value="exclusivement">Oui, exclusivement</option>
-        <option value="aussiailleurs">Oui, mais j’y vais aussi ailleurs</option>
-        <option value="varie">Non, je varie souvent</option>
-      </select>
-
-      <label for="adaptation">Pensez-vous que McDonald's propose une offre adaptée aux attentes actuelles ?</label>
-      <select id="adaptation" name="adaptation" required>
-        <option value="toutafait">Oui tout à fait</option>
-        <option value="plutotoui">Plutôt oui</option>
-        <option value="plutotnon">Plutôt non</option>
-        <option value="pasdutout">Pas du tout</option>
-      </select>
-
-      <!-- Partie 4 – Collaboration Willy Wonka -->
-      <label for="achat">Seriez-vous prêt à acheter ce produit ?</label>
-      <select id="achat" name="achat" required>
-        <option value="oui">Oui</option>
-        <option value="non">Non</option>
-      </select>
-
-      <label for="prixchocolat">À quel prix seriez-vous prêt à acheter ce produit ?</label>
-      <select id="prixchocolat" name="prixchocolat" required>
-        <option value="menu+2">Prix du menu + 2 €</option>
-        <option value="menu+3">Prix du menu + 3 €</option>
-        <option value="menu+4">Prix du menu + 4 €</option>
-      </select>
-
-      <button type="submit">Envoyer</button>
-    </form>
-  </div>
-
-  <!-- Script de randomisation -->
-  <script>
-    const images = [
-      "McDo.png",       // image tablette McDo seule
-      "partenariat.png" // image tablette partenariat Wonka
-    ];
-    const randomIndex = Math.floor(Math.random() * images.length);
-    document.getElementById("testImage").src = images[randomIndex];
-  </script>
+        // Pour enregistrer l'image vue dans Formspree, on ajoute un champ caché
+        const form = document.querySelector('form');
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'image_vue';
+        hiddenInput.value = selectedImage;
+        form.appendChild(hiddenInput);
+    </script>
 </body>
 </html>
-<style>
-    /*
-    ==================================================
-    CSS (STYLE MCDO THÉMATIQUE)
-    ==================================================
-    */
-    :root {
-        --sapin-green: #004d40;
-        --light-cream: #f9f9f9;
-        --accent-gold: #ffc72c;
-        --accent-red: #c00;
-        --text-on-dark: #f0f0f0;
-        --text-dark: #333;
-        --text-light: #555;
-        --mcdo-font: 'Oswald', sans-serif;
-        --body-font: Arial, sans-serif;
-    }
-
-    body {
-        font-family: var(--body-font);
-        background-color: var(--sapin-green);
-        color: var(--text-on-dark);
-        margin: 0;
-        padding: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
-
-    .container {
-        background-color: var(--light-cream);
-        padding: 50px;
-        border-radius: 15px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        max-width: 850px;
-        width: 100%;
-        border-top: 8px solid var(--accent-gold); 
-        color: var(--text-dark);
-    }
-
-    header {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-    header h1 {
-        font-family: var(--mcdo-font);
-        color: var(--accent-gold);
-        font-size: 3.2em;
-        font-weight: 700;
-        margin-bottom: 10px;
-        line-height: 1.1;
-    }
-
-    header p {
-        color: var(--text-light); 
-        font-size: 1.2em;
-    }
-
-    /* Style des groupes de questions (cartes) */
-    .question-group {
-        margin-bottom: 30px;
-        padding: 25px;
-        border: none;
-        border-radius: 10px;
-        background-color: var(--bg-white); 
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); 
-    }
-
-    .question-group h3 {
-        font-family: var(--mcdo-font);
-        margin-top: 0;
-        color: var(--sapin-green);
-        font-size: 1.6em;
-        font-weight: 500;
-        border-left: none; 
-        padding-left: 0; 
-        margin-bottom: 20px;
-    }
-
-    /* Sous-titres des questions (h4) */
-    .question-group h4 {
-        font-family: var(--mcdo-font);
-        color: var(--accent-red);
-        font-size: 1.2em;
-        margin-top: 25px;
-        margin-bottom: 10px;
-    }
-    
-    /* Conteneur pour aligner les images côte à côte */
-    .image-comparison-container {
-        display: flex;
-        justify-content: space-around;
-        gap: 15px;
-        margin-bottom: 20px;
-        flex-wrap: wrap; 
-    }
-    
-    .image-option {
-        flex: 1 1 45%; 
-        text-align: center;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        transition: background-color 0.2s;
-    }
-
-    .image-option:hover {
-        background-color: #f0f0f0;
-    }
-
-    .image-option img {
-        max-width: 100%;
-        height: auto;
-        border: 3px solid transparent;
-        border-radius: 6px;
-        transition: border-color 0.3s, box-shadow 0.3s;
-        cursor: pointer;
-    }
-    
-    /* Visuel du bouton radio sous l'image */
-    .image-choice-label {
-        display: block; 
-        cursor: pointer;
-        padding: 0;
-        margin-top: 10px;
-        border: none;
-        text-align: center;
-        font-weight: bold;
-    }
-    
-    .image-choice-label input[type="radio"] {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    /* Quand l'option est sélectionnée, on met en évidence l'image */
-    .image-choice-label:has(input[type="radio"]:checked) img {
-        border-color: var(--accent-gold);
-        box-shadow: 0 0 10px rgba(255, 199, 44, 0.9);
-    }
-
-    /* Styles des autres éléments */
-    label {
-        display: flex;
-        align-items: center;
-        margin: 15px 0;
-        padding: 12px;
-        border-radius: 8px;
-        transition: background-color 0.2s, box-shadow 0.2s;
-        cursor: pointer;
-        border: 1px solid #eee;
-    }
-
-    label:hover {
-        background-color: #fff3cc;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    input[type="radio"], input[type="checkbox"] {
-        appearance: none;
-        width: 18px;
-        height: 18px;
-        border: 2px solid var(--accent-gold);
-        border-radius: 50%; 
-        margin-right: 15px;
-        display: grid;
-        place-content: center;
-        cursor: pointer;
-        transition: border-color 0.2s;
-        flex-shrink: 0;
-    }
-    
-    input[type="checkbox"] {
-        border-radius: 4px;
-    }
-
-    input[type="radio"]::before, input[type="checkbox"]::before {
-        content: "";
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        transform: scale(0);
-        transition: 120ms transform ease-in-out;
-        box-shadow: inset 1em 1em var(--accent-red);
-    }
-
-    input[type="checkbox"]::before {
-        border-radius: 2px;
-    }
-
-    input[type="radio"]:checked, input[type="checkbox"]:checked {
-        border-color: var(--accent-red);
-    }
-    
-    input[type="radio"]:checked::before, input[type="checkbox"]:checked::before {
-        transform: scale(1);
-    }
-    
-    input[type="number"], input[type="text"] {
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        width: 90%;
-        margin-top: 10px;
-        font-size: 1em;
-        transition: border-color 0.2s;
-        display: block;
-    }
-
-    label.text-input-label {
-        display: block;
-        margin-top: 5px;
-        padding: 0;
-        border: none;
-        box-shadow: none;
-    }
-
-    label.text-input-label:hover {
-        background-color: transparent;
-        box-shadow: none;
-    }
-
-    button {
-        font-family: var(--mcdo-font);
-        display: block;
-        width: 100%;
-        padding: 18px;
-        background-color: var(--accent-red);
-        color: white;
-        border: none;
-        border-radius: 10px;
-        font-size: 1.5em;
-        font-weight: 700;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-        margin-top: 30px;
-        letter-spacing: 2px;
-    }
-
-    button:hover {
-        background-color: #a00;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #results {
-        margin-top: 40px;
-        padding: 30px;
-        border: 2px solid var(--sapin-green);
-        background-color: #e8f5e9;
-        border-radius: 10px;
-        display: none;
-        text-align: left;
-        color: var(--text-dark);
-    }
-
-    #results h2 {
-        font-family: var(--mcdo-font);
-        color: var(--sapin-green);
-        text-align: center;
-    }
-</style>
